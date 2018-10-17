@@ -11,5 +11,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Just for github test",Toast.LENGTH_SHORT).show();
     }
 }
