@@ -1,17 +1,33 @@
 package com.example.josef.rpsgame;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.view.View;
+
 
 public class MainActivity extends Activity {
+
+    Button ExitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getActionBar().hide();
         setContentView(R.layout.activity_main);
-        Toast.makeText(getApplicationContext(),"hello",Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"Just for github test",Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"ANd final test to push and pull on github with 2nd device",Toast.LENGTH_SHORT).show();
+        ExitButton = findViewById(R.id.ExitButton);
+        ExitButton.setBackgroundColor(Color.YELLOW);
     }
+
+    public void OnExitButtonClick(View view){
+        this.finishAndRemoveTask();
+
+    }
+
 }
