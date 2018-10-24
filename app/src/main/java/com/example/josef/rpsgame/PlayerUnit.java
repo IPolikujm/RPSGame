@@ -17,7 +17,9 @@ public class PlayerUnit {
         d = context.getResources().getDrawable(R.drawable.scissors_256_256);
         image_x = 64;
         image_y = 64;
-        UnitImage = BitmapFactory.decodeResource(context.getResources(),R.drawable.scissors_256_256_r90);
+        UnitImage = BitmapFactory.decodeResource(context.getResources(),R.drawable.scissors_256_256_r90_blue);
+        //UnitImage = BitmapFactory.decodeResource(context.getResources(),R.drawable.stone90);
+
     }
 
     public void checkAlive(){
