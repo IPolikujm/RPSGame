@@ -1,6 +1,7 @@
 package com.example.josef.rpsgame;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Window;
@@ -28,6 +29,11 @@ public class MainActivity extends Activity {
     public void OnExitButtonClick(View view){
         this.finishAndRemoveTask();
 
+    }
+
+    public void OnPlayButtonClick(View view){
+        Intent gameActivity = new Intent(this, GameActivity.class);
+        startActivity(gameActivity);
     }
 
 }
