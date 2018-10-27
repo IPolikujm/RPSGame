@@ -26,7 +26,7 @@ public class RPSGameView extends View   {
     public RPSGameView(Context context,double height,double width) {
         super(context);
         this.context = context;
-        pokus = new PlayerUnit(context,4,4);
+        //pokus = new PlayerUnit(context,4,4);
         setUpBackgroud();
         this.width = width;
         this.height = height;
