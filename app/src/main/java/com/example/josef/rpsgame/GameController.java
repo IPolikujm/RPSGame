@@ -23,6 +23,7 @@ public class GameController {
     Player player1;
     Player player2;
     Player onTurnPLayer;
+    public boolean endGame = false;
 
 
     public GameController(Context context, double displayHeight, double displayWidth) {
@@ -190,11 +191,36 @@ public class GameController {
     }
 
     public void DoMove(ChessboardSquare origin, ChessboardSquare newOne){
+        if (newOne.unit == null){
+            newOne.unit = origin.unit;
+            origin.unit = null;
+            return;
+        }
+
+        switch (doFight(origin,newOne)){
+            case "win": {
+                newOne.unit = origin.unit;
+                origin.unit = null;
+                break;
+            }
+            case "defeat":{
+                origin.unit = null;
+                break;
+            }
+            case "draw":{
+                newOne.unit = origin.unit;
+                origin.unit = null;
+                break;
+            }
+
+        }
+/*
         if (origin.unit != null) {
             newOne.unit = origin.unit;
             origin.unit = null;
 
         }
+        */
     }
 
     public void changePLayer(Player player){
@@ -242,6 +268,48 @@ public class GameController {
             case 4: return new Flag(context,i,r,player);
 
         }
+        return null;
+    }
+
+    public String doFight(ChessboardSquare attacking,ChessboardSquare defending){
+        if (attacking.unit instanceof Paper){
+            if (defending.unit instanceof Paper){
+                return "draw";
+            }
+            if (defending.unit instanceof Scissors){
+                return "defeat";
+            }
+            if (defending.unit instanceof Rock){
+                return  "win";
+            }
+        }
+        if (attacking.unit instanceof Rock){
+            if (defending.unit instanceof Paper){
+                return "defeat";
+            }
+            if (defending.unit instanceof Scissors){
+                return "win";
+            }
+            if (defending.unit instanceof Rock){
+                return  "draw";
+            }
+        }
+        if (attacking.unit instanceof Scissors) {
+            if (defending.unit instanceof Paper) {
+                return "win";
+            }
+            if (defending.unit instanceof Scissors) {
+                return "draw";
+            }
+            if (defending.unit instanceof Rock) {
+                return "defeat";
+            }
+        }
+        if (defending.unit instanceof  Flag){
+            endGame = true;
+            return "win";
+        }
+
         return null;
     }
 
