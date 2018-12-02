@@ -212,7 +212,6 @@ public class GameController {
                     return null;
                 }else{
                     if (clickedPoint.x >= RPSImages[0].LeftUpperPoint.x && clickedPoint.x <= RPSImages[0].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[0].LeftUpperPoint.y && clickedPoint.y <= RPSImages[0].LeftUpperPoint.y + RPSImageResolution.y){
-                        Log.println(Log.INFO, "DRAW_CHOOSE", "DRAW DRAW DRAW DRAW DRAW");
 
                         atackedSquareStuckedInDraw.unit = new Rock(context,atackedSquareStuckedInDraw.unit.column,atackedSquareStuckedInDraw.unit.row, atackedSquareStuckedInDraw.unit.player,atackedSquareStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
                         //changePLayer(onTurnPLayer);

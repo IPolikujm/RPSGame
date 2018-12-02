@@ -16,6 +16,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.security.spec.ECField;
+
 public class GameActivity extends Activity {
 
     boolean gameIsON = false;
@@ -131,6 +133,20 @@ public class GameActivity extends Activity {
                         if(controller.fightResult == "Win"){
                             MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ta_da);
                             mediaPlayer.start();
+                            try{
+                                Thread.sleep(500);
+                            }catch (Exception e){
+
+                            }
+                        }
+                        if(controller.fightResult == "Defeat"){
+                            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.nope);
+                            mediaPlayer.start();
+                            try{
+                                Thread.sleep(300);
+                            }catch (Exception e){
+
+                            }
                         }
 
                         if (!controller.endGame) {
@@ -160,7 +176,7 @@ public class GameActivity extends Activity {
                                         }
                                     }, 250);
                                 }
-                            }, 500);
+                            }, 2300);
 
 
                         }else{
