@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -127,7 +128,10 @@ public class GameActivity extends Activity {
                         isWaiting = true;
                         //rpsGameView = rps;
                         setContentView(rps);
-
+                        if(controller.fightResult == "Win"){
+                            MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ta_da);
+                            mediaPlayer.start();
+                        }
 
                         if (!controller.endGame) {
                             helpAcitities = new Intent(this, NextPlayer.class);

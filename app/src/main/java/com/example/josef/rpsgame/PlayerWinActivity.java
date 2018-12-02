@@ -2,6 +2,7 @@ package com.example.josef.rpsgame;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -29,6 +30,8 @@ public class PlayerWinActivity extends Activity {
             getWindow().getDecorView().setBackgroundColor(Color.BLUE);
             textView.setText("Blue Wins!");
         }
+        MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.happy_birthday);
+        mediaPlayer.start(); //
 
         //setContentView(R.layout.activity_player_win);
 
