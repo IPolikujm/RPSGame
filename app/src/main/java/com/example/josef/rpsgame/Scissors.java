@@ -4,8 +4,8 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 
 public class Scissors extends PlayerUnit {
-    public Scissors(Context context, int r, int c, Player player) {
-        super(context, r, c, player);
+    public Scissors(Context context, int r, int c, Player player,  int x, int y) {
+        super(context, r, c, player, x, y);
         super.canMove = true;
         if (player.ID == 1) {
             super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90p_blue);

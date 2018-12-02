@@ -13,8 +13,10 @@ public class PlayerUnit {
     int row, column;
     Context context;
     boolean canMove;
+    private boolean OtherPlayerVisible = false;
+    Point2D leftUpper;
 
-    public PlayerUnit(Context context, int r, int c, Player player) {
+    public PlayerUnit(Context context, int r, int c, Player player, int x, int y) {
         IsAlive = true;
         image_x = 64;
         image_y = 64;
@@ -23,6 +25,7 @@ public class PlayerUnit {
         row = c;
         column = r;
         this.player = player;
+        leftUpper = new Point2D(x,y);
     }
     public PlayerUnit(){
         UnitImage = BitmapFactory.decodeResource(context.getResources(),R.drawable.flag90n_black);
@@ -43,5 +46,11 @@ public class PlayerUnit {
         return UnitImage;
     }
 
+    public void SetUnitVisible(){
+        OtherPlayerVisible = true;
+    }
+    public boolean isVisible(){
+        return OtherPlayerVisible;
+    }
 
 }
