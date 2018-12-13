@@ -8,7 +8,10 @@ public class Scissors extends PlayerUnit {
         super(context, r, c, player, x, y);
         super.canMove = true;
         if (player.ID == 1) {
-            super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90p_blue);
+            if (player.GetColor() == 1)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90p_blue);
+            if (player.GetColor() == 2)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90p_green);
         }
         if (player.ID == 2) {
             super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90n_red);

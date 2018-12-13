@@ -3,4 +3,5 @@
     <string name="play">Play</string>
     <string name="exit">Exit</string>
     <string name="next_player">Next Player</string>
+    <string name="settingsbutton">SettingsButton</string>
 </resources>

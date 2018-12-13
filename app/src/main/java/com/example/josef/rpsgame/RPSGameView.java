@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class RPSGameView extends View   {
 
-    private Integer PlayerID;
+    private Player PlayerID;
     Canvas canvas;
     Context context;
     PlayerUnit pokus;
@@ -46,7 +46,7 @@ public class RPSGameView extends View   {
 
     }
 
-    public RPSGameView(Context context, double height, double width, Canvas canvas,ChessboardSquare[][] chessboardSquares, int playerID) {
+    public RPSGameView(Context context, double height, double width, Canvas canvas,ChessboardSquare[][] chessboardSquares, Player player, int enemyqmColor) {
         super(context);
         setWillNotDraw(false);
         this.context = context;
@@ -57,13 +57,17 @@ public class RPSGameView extends View   {
         this.height = height;
         this.canvas = canvas;
         this.chessboardSquares = chessboardSquares;
-        this.PlayerID = playerID;
-        switch (playerID){
+        this.PlayerID = player;
+        switch (player.ID){
             case 1:
                 InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90n_red);
                 break;
             case 2:
-                InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90p_blue);
+                if(enemyqmColor == 1)
+                    InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90p_blue);
+                if(enemyqmColor == 2)
+                    InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90p_green);
+
                 break;
                 default:
                     break;
@@ -114,7 +118,7 @@ public class RPSGameView extends View   {
 
 
                 if (square.unit != null) {
-                    if (square.unit.player.ID != this.PlayerID){
+                    if (square.unit.player.ID != this.PlayerID.ID){
                         if (!square.unit.isVisible()){
                             canvas.drawBitmap(Bitmap.createScaledBitmap(InvisUnit, 64, 64, true), square.unit.leftUpper.x, square.unit.leftUpper.y, null);
                         }else{

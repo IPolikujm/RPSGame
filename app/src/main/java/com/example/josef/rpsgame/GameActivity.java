@@ -48,12 +48,20 @@ public class GameActivity extends Activity {
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        Intent intent = getIntent();
+        int leftColor = intent.getIntExtra("leftColor", 1);
+        int rightColor = intent.getIntExtra("rightColor", 1);
+
+
         controller = new GameController(getApplicationContext(), displayMetrics.heightPixels,displayMetrics.widthPixels);
+        controller.player1.SetColor(leftColor);
         controllerPlayer2 = new GameController(getApplicationContext(), displayMetrics.heightPixels,displayMetrics.widthPixels);
         controllerPlayer2.onTurnPLayer = controllerPlayer2.player2;
+        controllerPlayer2.player2.SetColor(rightColor);
         controllerPlayer2.chessBoard = controller.chessBoard;
         handler = new Handler();
         isWaiting = false;
+
 
     }
 
@@ -223,9 +231,9 @@ public class GameActivity extends Activity {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         controller.SetPLayer1Units();
-        rpsGameView = new RPSGameView(getApplicationContext(),displayMetrics.heightPixels,displayMetrics.widthPixels,canvas, controller.chessBoard, 1);
+        rpsGameView = new RPSGameView(getApplicationContext(),displayMetrics.heightPixels,displayMetrics.widthPixels,canvas, controller.chessBoard, controller.player1, controllerPlayer2.player2.GetColor());
         rpsGameView.RPSImages = controller.RPSImages;
-        rpsGameView2 = new RPSGameView(getApplicationContext(),displayMetrics.heightPixels,displayMetrics.widthPixels,canvas, controllerPlayer2.chessBoard,2);
+        rpsGameView2 = new RPSGameView(getApplicationContext(),displayMetrics.heightPixels,displayMetrics.widthPixels,canvas, controllerPlayer2.chessBoard,controllerPlayer2.player2, controller.player1.GetColor());
         rpsGameView2.RPSImages = controller.RPSImages;
         gameIsON = true;
         setContentView(rpsGameView);

@@ -8,7 +8,10 @@ public class Paper extends PlayerUnit {
         super(context, r, c, player, x, y);
         super.canMove = true;
         if (player.ID == 1) {
-            super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90p_blue);
+            if (player.GetColor() == 1)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90p_blue);
+            if (player.GetColor() == 2)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90p_green);
         }
         if (player.ID == 2) {
             super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90n_red);
