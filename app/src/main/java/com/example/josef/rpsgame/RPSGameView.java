@@ -60,7 +60,10 @@ public class RPSGameView extends View   {
         this.PlayerID = player;
         switch (player.ID){
             case 1:
-                InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90n_red);
+                if(enemyqmColor == 1)
+                    InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90n_red);
+                if(enemyqmColor == 2)
+                    InvisUnit = BitmapFactory.decodeResource(context.getResources(), R.drawable.questionmark90n_orange);
                 break;
             case 2:
                 if(enemyqmColor == 1)

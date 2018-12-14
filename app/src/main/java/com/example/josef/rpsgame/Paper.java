@@ -14,7 +14,10 @@ public class Paper extends PlayerUnit {
                 super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90p_green);
         }
         if (player.ID == 2) {
-            super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90n_red);
+            if (player.GetColor() == 1)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90n_red);
+            if (player.GetColor() == 2)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.paper90n_orange);
         }
 
     }

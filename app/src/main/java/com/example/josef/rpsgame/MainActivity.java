@@ -62,33 +62,39 @@ public class MainActivity extends Activity {
         }
 
         if (requestCode == 112){
-            int leftColor = data.getIntExtra("leftColor", 0);
-            int rightColor = data.getIntExtra("rightColor", 0);
-            editor = sharedPreferences.edit();
+            int leftColor = data.getIntExtra("leftColor", 1);
+            int rightColor = data.getIntExtra("rightColor", 1);
 
             switch (leftColor){
                 case 1:
-                    editor.putInt("leftPlayer", 1);
+                    editor = sharedPreferences.edit();
+                    editor.putInt("leftColor", 1);
+                    editor.apply();
                     this.leftColor = 1;
                     break;
                 case 2:
-                    editor.putInt("leftPlayer", 2);
+                    editor = sharedPreferences.edit();
+                    editor.putInt("leftColor", 2);
+                    editor.apply();
                     this.leftColor = 2;
                     break;
             }
 
             switch (rightColor){
                 case 1:
-                    editor.putInt("rightPlayer", 1);
+                    editor = sharedPreferences.edit();
+                    editor.putInt("rightColor", 1);
+                    editor.apply();
                     this.rightColor = 1;
                     break;
                 case 2:
-                    editor.putInt("rightPlayer", 2);
+                    editor = sharedPreferences.edit();
+                    editor.putInt("rightColor", 2);
+                    editor.apply();
                     this.rightColor = 2;
                     break;
             }
 
-            editor.apply();
 
 
 

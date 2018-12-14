@@ -14,7 +14,10 @@ public class Scissors extends PlayerUnit {
                 super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90p_green);
         }
         if (player.ID == 2) {
-            super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90n_red);
+            if (player.GetColor() == 1)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90n_red);
+            if (player.GetColor() == 2)
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.scissors90n_orange);
         }
     }
 }

@@ -189,8 +189,7 @@ public class Settings extends Activity {
         yellowSelected = true;
         somethingSelected = true;
         color = 3;
-        rightColor = 1;
-        leftColor = 2;
+        rightColor = 2;
     }
 
     private void highlightGreen(){

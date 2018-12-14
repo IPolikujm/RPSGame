@@ -18,7 +18,7 @@ public class Rock extends PlayerUnit {
             if (player.GetColor() == 1)
                 super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.stone90n_red);
             if (player.GetColor() == 2)
-                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.stone90n_red);
+                super.UnitImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.stone90n_orange);
         }
     }
 }

@@ -4,4 +4,7 @@
     <string name="exit">Exit</string>
     <string name="next_player">Next Player</string>
     <string name="settingsbutton">SettingsButton</string>
+    <string name="choose">Choose</string>
+    <string name="color">Color</string>
+
 </resources>
