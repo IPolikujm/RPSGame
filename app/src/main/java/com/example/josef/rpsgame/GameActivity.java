@@ -9,14 +9,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import java.security.spec.ECField;
 
 public class GameActivity extends Activity {
 
@@ -72,11 +69,8 @@ public class GameActivity extends Activity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     float touchX = event.getX();
                     float touchY = event.getY();
-                    //rpsGameView.Draw(canvas, (int) touchX, (int) touchY);
                     Point2D touchPoint = new Point2D((int) touchX, (int) touchY);
                     RPSGameView rps = null;
-
-
 
                     if (currentPlayer == 1){
                         rps = controller.onUserAction(touchPoint, rpsGameView);
@@ -97,12 +91,8 @@ public class GameActivity extends Activity {
                                     drawCousedClick_X = touchX;
                                     drawCousedClick_Y = touchY;
                                     iWasHereP1 = true;
-                                    //rps.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),MotionEvent.ACTION_DOWN, touchX, touchY, 0));
                                     return super.onTouchEvent(event);
                                 }
-
-
-
                             }
                         }
                         if (currentPlayer == 2){
@@ -118,8 +108,6 @@ public class GameActivity extends Activity {
                                     iWasHereP1 = true;
                                     return super.onTouchEvent(event);
                                 }
-                                //changePlayerDueDraw = true;
-                                //rps.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(),SystemClock.uptimeMillis(),MotionEvent.ACTION_DOWN, touchX, touchY, 0));
 
                             }
                         }
@@ -136,7 +124,6 @@ public class GameActivity extends Activity {
                             currentPlayer = 1;
                         }
                         isWaiting = true;
-                        //rpsGameView = rps;
                         setContentView(rps);
                         if(controller.fightResult == "Win"){
                             MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.ta_da);
@@ -202,20 +189,7 @@ public class GameActivity extends Activity {
                         }
 
                     }
-                    Log.println(Log.INFO, "aijdoga", "POsition: " + touchX + " y: " + touchY);
-                    Toast.makeText(getApplicationContext(), "Clicked: x " + touchX + " y " + touchY, Toast.LENGTH_SHORT);
-               /* if (rpsGameView != null) {
-                    setContentView(rpsGameView);
-                    Intent nextPlayer = new Intent(this, NextPlayer.class);
-                    nextPlayer.putExtra("np",nextPLayerN);
-                    if (nextPLayerN == 2){
-                        nextPLayerN = 1;
-                    }
-                    else{
-                        nextPLayerN = 2;
-                    }
-                    startActivity(nextPlayer);
-                }*/
+
                     return super.onTouchEvent(event);
                 } else {
                     return super.onTouchEvent(event);

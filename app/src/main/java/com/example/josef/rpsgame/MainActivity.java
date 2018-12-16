@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getActionBar().hide();
         setContentView(R.layout.activity_main);
         ExitButton = findViewById(R.id.ExitButton);
         ExitButton.setBackgroundColor(Color.YELLOW);

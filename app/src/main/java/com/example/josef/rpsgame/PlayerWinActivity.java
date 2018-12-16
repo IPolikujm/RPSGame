@@ -31,9 +31,7 @@ public class PlayerWinActivity extends Activity {
             textView.setText("Blue Wins!");
         }
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.happy_birthday);
-        mediaPlayer.start(); //
-
-        //setContentView(R.layout.activity_player_win);
+        mediaPlayer.start();
 
     }
 

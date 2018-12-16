@@ -3,17 +3,11 @@ package com.example.josef.rpsgame;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.AndroidException;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 public class Settings extends Activity {
 
@@ -63,7 +57,6 @@ public class Settings extends Activity {
     }
 
     public void blueOnClick(View view){
-        //blueImageView.getDrawable().setColorFilter(Color.argb(120,30,240,30), PorterDuff.Mode.);
         if (!somethingSelected){
             highlightBlue();
         }else{
@@ -78,7 +71,6 @@ public class Settings extends Activity {
     }
 
     public void redOnClick(View view){
-        //blueImageView.getDrawable().setColorFilter(Color.argb(120,30,240,30), PorterDuff.Mode.);
         if (!somethingSelected){
             highLightRed();
         }else {

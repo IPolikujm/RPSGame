@@ -2,12 +2,8 @@ package com.example.josef.rpsgame;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import android.content.Context;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
+
 
 public class GameController {
 
@@ -48,9 +44,7 @@ public class GameController {
         onTurnPLayer = player1;
         this.displayHeight = (int)displayHeight;
         this.displayWidth = (int)displayWidth;
-        //gameDesk_leftUpper_point = new Point2D(0,0);
-       // gameDesk_leftUpper_point.x = (int)displayWidth/54;
-       // gameDesk_leftUpper_point.y = (int)displayHeight/48;
+
         double vector_x = ((((double)(this.displayWidth))/54)*52)/8;
         double vector_y = (((((double)(this.displayHeight))/48)*26)/8);
         gameDesk_leftUpper_point = new Point2D( (int)displayWidth/54,11*(int)displayHeight/48); //levý horní roh šachovnice - pozice levého horního čtverečku
@@ -86,52 +80,19 @@ public class GameController {
     }
 
     public void SetPLayer1Units(){
-        //p1Units.add(new Scissors(context));
-        //unit = new Scissors(context,2,1);
-        //pjUnits.add(unit);
-
-
-        //PlayerUnit flagP1 = new PlayerUnit(context,0,6,player1);
-        //PlayerUnit flagP2 = new PlayerUnit(context,7,4,player2);
-       /*
-        for (int i = 0; i < 4; i++){
-            PlayerUnit scissors = new Scissors(context,i,0,player1);
-            PlayerUnit rock = new Rock(context,i+4,0, player1);
-            chessBoard[i][0].unit = scissors;
-            chessBoard[i+4][0].unit = rock;
-            PlayerUnit paper = new Paper(context,i,1, player1);
-            chessBoard[i][1].unit = paper;
-            chessBoard[i+4][1].unit = paper;
-
-            scissors = new Scissors(context,i,0,player2);
-            rock = new Rock(context,i+4,0, player2);
-            chessBoard[i][7].unit = scissors;
-            chessBoard[i+4][7].unit = rock;
-            paper = new Paper(context,i,1, player2);
-            chessBoard[i][6].unit = paper;
-            chessBoard[i+4][6].unit = paper;
-
-        }*/
         SetUnitsOnBoard(0,player1);
         SetUnitsOnBoard(6,player2);
 
     }
 
     public RPSGameView onUserAction(Point2D clickedPoint, RPSGameView view){
-        //in chessboar
         switch (MODE){
             case "game":
 
                 if (clickedPoint.x > this.gameDesk_leftUpper_point.x && clickedPoint.x < gameDesk_rightBottom_point.x && clickedPoint.y > gameDesk_leftUpper_point.y && clickedPoint.y < gameDesk_rightBottom_point.y){
-                    Log.println(Log.INFO, "hello", "clicked in chessboard ");
-                    Toast.makeText(context,"Clicked in chessboard",Toast.LENGTH_SHORT);
                     for (int i = 0; i < 8; i++){
                         for (int j = 0; j < 8; j++){
                             if (chessBoard[i][j].isPointIn(clickedPoint)){//click on square
-
-                            Log.println(Log.INFO, "hello2", "clicked in square [" + j + "][" + i + "]");
-                            Log.println(Log.INFO, "hello2", "clicked in square [" + chessBoard[i][j].matrixPossition.x + "][" + chessBoard[i][j].matrixPossition.y + "]");
-                            Toast.makeText(context, "clicked in square [" + i + "][" + j + "]", Toast.LENGTH_SHORT);
                             if (possibleMovement != null) {
                                 //some square clicked 2nd time
                                 for (int k = 0; k < 4; k++) {
@@ -187,24 +148,20 @@ public class GameController {
             case "draw":
                 if (!playerChoosedInDraw){
                     if (clickedPoint.x >= RPSImages[0].LeftUpperPoint.x && clickedPoint.x <= RPSImages[0].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[0].LeftUpperPoint.y && clickedPoint.y <= RPSImages[0].LeftUpperPoint.y + RPSImageResolution.y){
-                        Log.println(Log.INFO, "DRAW_CHOOSE", "DRAW DRAW DRAW DRAW DRAW");
 
                         clickedSquereStuckedInDraw.unit = new Rock(context,clickedSquereStuckedInDraw.unit.column,clickedSquereStuckedInDraw.unit.row, clickedSquereStuckedInDraw.unit.player,clickedSquereStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         return view;
                     }
                     if (clickedPoint.x >= RPSImages[1].LeftUpperPoint.x && clickedPoint.x <= RPSImages[1].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[1].LeftUpperPoint.y && clickedPoint.y <= RPSImages[1].LeftUpperPoint.y + RPSImageResolution.y){
                         clickedSquereStuckedInDraw.unit = new Paper(context,clickedSquereStuckedInDraw.unit.column,clickedSquereStuckedInDraw.unit.row, clickedSquereStuckedInDraw.unit.player,clickedSquereStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         return view;
                     }
                     if (clickedPoint.x >= RPSImages[2].LeftUpperPoint.x && clickedPoint.x <= RPSImages[2].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[2].LeftUpperPoint.y && clickedPoint.y <= RPSImages[2].LeftUpperPoint.y + RPSImageResolution.y){
                         clickedSquereStuckedInDraw.unit = new Scissors(context,clickedSquereStuckedInDraw.unit.column,clickedSquereStuckedInDraw.unit.row, clickedSquereStuckedInDraw.unit.player,clickedSquereStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         return view;
@@ -214,7 +171,6 @@ public class GameController {
                     if (clickedPoint.x >= RPSImages[0].LeftUpperPoint.x && clickedPoint.x <= RPSImages[0].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[0].LeftUpperPoint.y && clickedPoint.y <= RPSImages[0].LeftUpperPoint.y + RPSImageResolution.y){
 
                         atackedSquareStuckedInDraw.unit = new Rock(context,atackedSquareStuckedInDraw.unit.column,atackedSquareStuckedInDraw.unit.row, atackedSquareStuckedInDraw.unit.player,atackedSquareStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         playerChoosedInDraw = false;
@@ -223,10 +179,8 @@ public class GameController {
                         return view;
                     }
                     if (clickedPoint.x >= RPSImages[1].LeftUpperPoint.x && clickedPoint.x <= RPSImages[1].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[1].LeftUpperPoint.y && clickedPoint.y <= RPSImages[1].LeftUpperPoint.y + RPSImageResolution.y){
-                        Log.println(Log.INFO, "DRAW_CHOOSE", "DRAW DRAW DRAW DRAW DRAW");
 
                         atackedSquareStuckedInDraw.unit = new Paper(context,atackedSquareStuckedInDraw.unit.column,atackedSquareStuckedInDraw.unit.row, atackedSquareStuckedInDraw.unit.player,atackedSquareStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         playerChoosedInDraw = false;
@@ -235,10 +189,8 @@ public class GameController {
                         return view;
                     }
                     if (clickedPoint.x >= RPSImages[2].LeftUpperPoint.x && clickedPoint.x <= RPSImages[2].LeftUpperPoint.x + RPSImageResolution.x && clickedPoint.y >= RPSImages[2].LeftUpperPoint.y && clickedPoint.y <= RPSImages[2].LeftUpperPoint.y + RPSImageResolution.y){
-                        Log.println(Log.INFO, "DRAW_CHOOSE", "DRAW DRAW DRAW DRAW DRAW");
 
                         atackedSquareStuckedInDraw.unit = new Scissors(context,atackedSquareStuckedInDraw.unit.column,atackedSquareStuckedInDraw.unit.row, atackedSquareStuckedInDraw.unit.player,atackedSquareStuckedInDraw.unit.leftUpper.x,clickedSquereStuckedInDraw.unit.leftUpper.y );
-                        //changePLayer(onTurnPLayer);
                         playerChoosedInDraw = true;
                         view.DrawDrawDone();
                         playerChoosedInDraw = false;
@@ -326,8 +278,6 @@ public class GameController {
 
     public void DoMove(ChessboardSquare origin, ChessboardSquare newOne, RPSGameView view){
         if (newOne.unit == null){
-            //view.Draw(origin, newOne);
-
             origin.unit.leftUpper.x = newOne.imageLeftUpperPoint.x;
             origin.unit.leftUpper.y = newOne.imageLeftUpperPoint.y;
             newOne.unit = origin.unit;
@@ -336,7 +286,7 @@ public class GameController {
             return;
         }
 
-        switch (doFight(origin,newOne, view)){
+        switch (doFight(origin,newOne, view)) {
             case "win": {
                 origin.unit.leftUpper = newOne.unit.leftUpper;
                 newOne.unit = origin.unit;
@@ -344,12 +294,12 @@ public class GameController {
                 fightResult = "Win";
                 break;
             }
-            case "defeat":{
+            case "defeat": {
                 origin.unit = null;
                 fightResult = "Defeat";
                 break;
             }
-            case "draw":{
+            case "draw": {
                 view.DrawDraw();
                 MODE = "draw";
                 fightResult = "Draw";
@@ -357,13 +307,6 @@ public class GameController {
             }
 
         }
-/*
-        if (origin.unit != null) {
-            newOne.unit = origin.unit;
-            origin.unit = null;
-
-        }
-        */
     }
 
     public void changePLayer(Player player){
@@ -417,7 +360,6 @@ public class GameController {
     public String doFight(ChessboardSquare attacking,ChessboardSquare defending, RPSGameView view){
         attacking.unit.SetUnitVisible();
         defending.unit.SetUnitVisible();
-        //view.Draw();
         if (attacking.unit instanceof Paper){
             if (defending.unit instanceof Paper){
                 return "draw";
