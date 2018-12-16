@@ -19,11 +19,12 @@ public class Settings extends Activity {
     RelativeLayout redLayout;
     RelativeLayout yellowLayout;
     RelativeLayout greenLayout;
-    boolean somethingSelected;
-    boolean blueSelected;
-    boolean redSelected;
-    boolean yellowSelected;
-    boolean greenSelected;
+    private boolean somethingSelected;
+    private boolean somethingRightSelected;
+    private boolean blueSelected;
+    private boolean redSelected;
+    private boolean yellowSelected;
+    private boolean greenSelected;
     int color;
     int rightColor;
     int leftColor;
@@ -41,6 +42,7 @@ public class Settings extends Activity {
         yellowLayout = findViewById(R.id.yellowRelativeBorder);
         greenLayout = findViewById(R.id.greenRelativeBorder);
         color = 0;
+        somethingRightSelected = false;
         rightColor = 0;
         leftColor = 0;
 
@@ -71,27 +73,27 @@ public class Settings extends Activity {
     }
 
     public void redOnClick(View view){
-        if (!somethingSelected){
+        if (!somethingRightSelected){
             highLightRed();
         }else {
             if (!redSelected) {
-                clearSomethingClick();
+                clearRoightSomethingClick();
                 highLightRed();
             }else{
-                clearSomethingClick();
+                clearRoightSomethingClick();
             }
         }
     }
 
     public void yellowOnClick(View view){
-        if (!somethingSelected){
+        if (!somethingRightSelected){
             highlightYellow();
         }else {
             if (!yellowSelected) {
-                clearSomethingClick();
+                clearRoightSomethingClick();
                 highlightYellow();
             }else{
-                clearSomethingClick();
+                clearRoightSomethingClick();
             }
         }
     }
@@ -118,14 +120,19 @@ public class Settings extends Activity {
                 color = 0;
                 return;
             }
-            if (redSelected){
-                setRedLayoutWhite();
-                redSelected = false;
+
+            if(greenSelected){
+                setGreenLayoutWhite();
+                greenSelected = false;
                 somethingSelected = false;
                 color = 0;
                 return;
             }
+        }
+    }
 
+    private void clearRoightSomethingClick(){
+        if (somethingRightSelected){
             if(yellowSelected){
                 setYellowLayoutWhite();
                 yellowSelected = false;
@@ -134,9 +141,9 @@ public class Settings extends Activity {
                 return;
             }
 
-            if(greenSelected){
-                setGreenLayoutWhite();
-                greenSelected = false;
+            if (redSelected){
+                setRedLayoutWhite();
+                redSelected = false;
                 somethingSelected = false;
                 color = 0;
                 return;
@@ -163,7 +170,7 @@ public class Settings extends Activity {
     private void highLightRed(){
         redLayout.setBackgroundColor(Color.GREEN);
         redSelected = true;
-        somethingSelected = true;
+        somethingRightSelected = true;
         color = 2;
         rightColor = 1;
     }
@@ -179,7 +186,7 @@ public class Settings extends Activity {
     private void highlightYellow(){
         yellowLayout.setBackgroundColor(Color.GREEN);
         yellowSelected = true;
-        somethingSelected = true;
+        somethingRightSelected = true;
         color = 3;
         rightColor = 2;
     }
