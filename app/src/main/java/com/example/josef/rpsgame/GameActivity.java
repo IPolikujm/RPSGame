@@ -184,7 +184,7 @@ public class GameActivity extends Activity {
                                         }
                                     }, 250);
                                 }
-                            }, 2300);
+                            }, 1300);
 
 
                         }else{
